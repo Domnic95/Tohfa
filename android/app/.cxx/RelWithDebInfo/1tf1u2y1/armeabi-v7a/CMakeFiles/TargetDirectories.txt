@@ -1,0 +1,2 @@
+/Users/skytouch/Documents/FlutterProjects/Live Projects/tohfa-app-main/android/app/.cxx/RelWithDebInfo/1tf1u2y1/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/skytouch/Documents/FlutterProjects/Live Projects/tohfa-app-main/android/app/.cxx/RelWithDebInfo/1tf1u2y1/armeabi-v7a/CMakeFiles/rebuild_cache.dir
