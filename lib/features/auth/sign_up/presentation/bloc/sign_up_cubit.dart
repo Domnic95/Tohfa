@@ -6,7 +6,7 @@ import '../../data/model/country_model.dart';
 import '../../data/model/isd_code_model.dart';
 import '../../data/model/state_model.dart';
 
-class SignUpCubit extends Cubit<SignUpState> with ApiClientMixin{
+class SignUpCubit extends Cubit<SignUpState> with ApiClientMixin {
   List<IsdCodeModel> isdCodeModelList = [];
   List<CountryModel> countryModelList = [];
   List<StateModel> stateModelList = [];
@@ -30,11 +30,13 @@ class SignUpCubit extends Cubit<SignUpState> with ApiClientMixin{
         isdCodeModelList = response.data["data"] != null
             ? isdCodeModelFromJson(jsonEncode(response.data["data"]))
             : [];
-        if(isdCodeModelList.isNotEmpty){
-          try{
-            selectedCode=isdCodeModelList.firstWhere((element) => element.value=="+91",);
-          }catch(e){
-            selectedCode=isdCodeModelList.first;
+        if (isdCodeModelList.isNotEmpty) {
+          try {
+            selectedCode = isdCodeModelList.firstWhere(
+              (element) => element.value == "+91",
+            );
+          } catch (e) {
+            selectedCode = isdCodeModelList.first;
           }
         }
       } else {
@@ -78,25 +80,28 @@ class SignUpCubit extends Cubit<SignUpState> with ApiClientMixin{
     }
   }
 
-  onSendOptForSignUp( var body ) async {
+  onSendOptForSignUp(var body) async {
     emit(SignUpLoadingState());
-    try{
-
+    try {
       final response2 = await apiClient.post(
         body: jsonEncode(body),
         headers: Singleton.instance.getAuthHeaders(withType: true),
         ApiConstants.generateAndSendOtp,
-            (p0) => p0,
+        (p0) => p0,
       );
       if (response2.success) {
         showToast(response2.data["message"] ?? "Otp Send Successfully");
         onValueChange();
-        NavigatorService.pushNamed(AppRoutes.verifyOtpScreen,arguments: true);
+        NavigatorService.pushNamed(AppRoutes.verifyOtpScreen, arguments: {
+          'isUserFromReg': true,
+          'isFromEditScreen': false,
+          'bodyForUpdateProfile': {}
+        });
       } else {
         showToast(response2.errorMessage ?? AppStrings.somethingWentWrong);
         onValueChange();
       }
-    }catch(e){
+    } catch (e) {
       showToast(AppStrings.somethingWentWrong);
       logV("Error===>$e");
       onValueChange();

@@ -85,18 +85,26 @@ class EditProfileScreen extends StatelessWidget {
             customerBillPhone1.text = tempData?.customerBillPhone1 ?? "";
             customerBillPhone2.text = tempData?.customerBillPhone2 ?? "";
             customerBillPhone3.text = tempData?.customerBillPhone3 ?? "";
-            customerBillDefaultWhatsapp.text = tempData?.customerBillDefaultWhatsapp ?? "";
-            customerBillWhatsappNo1.text = tempData?.customerBillWhatsappNo1 ?? "";
-            customerBillWhatsappNo2.text = tempData?.customerBillWhatsappNo2 ?? "";
-            customerBillWhatsappNo3.text = tempData?.customerBillWhatsappNo3 ?? "";
+            customerBillDefaultWhatsapp.text =
+                tempData?.customerBillDefaultWhatsapp ?? "";
+            customerBillWhatsappNo1.text =
+                tempData?.customerBillWhatsappNo1 ?? "";
+            customerBillWhatsappNo2.text =
+                tempData?.customerBillWhatsappNo2 ?? "";
+            customerBillWhatsappNo3.text =
+                tempData?.customerBillWhatsappNo3 ?? "";
             customerBillEmail.text = tempData?.customerBillEmail ?? "";
             customerShipPhone1.text = tempData?.customerShipPhone1 ?? "";
             customerShipPhone2.text = tempData?.customerShipPhone2 ?? "";
             customerShipPhone3.text = tempData?.customerShipPhone3 ?? "";
-            customerShipDefaultWhatsapp.text = tempData?.customerShipDefaultWhatsapp ?? "";
-            customerShipWhatsappNo1.text = tempData?.customerShipWhatsappNo1 ?? "";
-            customerShipWhatsappNo2.text = tempData?.customerShipWhatsappNo2 ?? "";
-            customerShipWhatsappNo3.text = tempData?.customerShipWhatsappNo3 ?? "";
+            customerShipDefaultWhatsapp.text =
+                tempData?.customerShipDefaultWhatsapp ?? "";
+            customerShipWhatsappNo1.text =
+                tempData?.customerShipWhatsappNo1 ?? "";
+            customerShipWhatsappNo2.text =
+                tempData?.customerShipWhatsappNo2 ?? "";
+            customerShipWhatsappNo3.text =
+                tempData?.customerShipWhatsappNo3 ?? "";
             customerShipEmail.text = tempData?.customerShipEmail ?? "";
             billPanCard.text = tempData?.billPanCard ?? "";
             customerBillGstin.text = tempData?.customerBillGstin ?? "";
@@ -106,30 +114,37 @@ class EditProfileScreen extends StatelessWidget {
             customerBillGstinEditable = customerBillGstin.text.trim().isEmpty;
             shipPanCardEditable = shipPanCard.text.trim().isEmpty;
             customerShipGstinEditable = customerShipGstin.text.trim().isEmpty;
-            void setPhoneAndCode(String? phoneWithCode, TextEditingController controller,
+            void setPhoneAndCode(
+                String? phoneWithCode,
+                TextEditingController controller,
                 void Function(IsdCodeModel) setCode) {
               if (phoneWithCode != null && phoneWithCode.isNotEmpty) {
                 final parts = phoneWithCode.split(" ");
                 if (parts.length == 2) {
                   try {
-                    final code = bloc.isdCodeModelList.firstWhere((e) => e.value == parts[0]);
+                    final code = bloc.isdCodeModelList
+                        .firstWhere((e) => e.value == parts[0]);
                     setCode(code);
-                    controller.text = parts[1]; // just the number part in controller
+                    controller.text =
+                        parts[1]; // just the number part in controller
                   } catch (e) {
                     // fallback if not found
-                    final defaultCode = bloc.isdCodeModelList.firstWhere((e) => e.value == "+91");
+                    final defaultCode = bloc.isdCodeModelList
+                        .firstWhere((e) => e.value == "+91");
                     setCode(defaultCode);
                     controller.text = phoneWithCode; // fallback whole string
                   }
                 } else {
                   // no space found, fallback behavior
-                  final defaultCode = bloc.isdCodeModelList.firstWhere((e) => e.value == "+91");
+                  final defaultCode =
+                      bloc.isdCodeModelList.firstWhere((e) => e.value == "+91");
                   setCode(defaultCode);
                   controller.text = phoneWithCode;
                 }
               } else {
                 controller.text = "";
-                final defaultCode = bloc.isdCodeModelList.firstWhere((e) => e.value == "+91");
+                final defaultCode =
+                    bloc.isdCodeModelList.firstWhere((e) => e.value == "+91");
                 setCode(defaultCode);
               }
             }
@@ -140,13 +155,21 @@ class EditProfileScreen extends StatelessWidget {
                 (code) => customerBillPhone2Code = code);
             setPhoneAndCode(tempData?.customerBillPhone3, customerBillPhone3,
                 (code) => customerBillPhone3Code = code);
-            setPhoneAndCode(tempData?.customerBillDefaultWhatsapp, customerBillDefaultWhatsapp,
+            setPhoneAndCode(
+                tempData?.customerBillDefaultWhatsapp,
+                customerBillDefaultWhatsapp,
                 (code) => customerBillDefaultWhatsappCode = code);
-            setPhoneAndCode(tempData?.customerBillWhatsappNo1, customerBillWhatsappNo1,
+            setPhoneAndCode(
+                tempData?.customerBillWhatsappNo1,
+                customerBillWhatsappNo1,
                 (code) => customerBillWhatsappNo1Code = code);
-            setPhoneAndCode(tempData?.customerBillWhatsappNo2, customerBillWhatsappNo2,
+            setPhoneAndCode(
+                tempData?.customerBillWhatsappNo2,
+                customerBillWhatsappNo2,
                 (code) => customerBillWhatsappNo2Code = code);
-            setPhoneAndCode(tempData?.customerBillWhatsappNo3, customerBillWhatsappNo3,
+            setPhoneAndCode(
+                tempData?.customerBillWhatsappNo3,
+                customerBillWhatsappNo3,
                 (code) => customerBillWhatsappNo3Code = code);
             // For emails no ISD code needed
             customerBillEmail.text = tempData?.customerBillEmail ?? "";
@@ -157,13 +180,21 @@ class EditProfileScreen extends StatelessWidget {
                 (code) => customerShipPhone2Code = code);
             setPhoneAndCode(tempData?.customerShipPhone3, customerShipPhone3,
                 (code) => customerShipPhone3Code = code);
-            setPhoneAndCode(tempData?.customerShipDefaultWhatsapp, customerShipDefaultWhatsapp,
+            setPhoneAndCode(
+                tempData?.customerShipDefaultWhatsapp,
+                customerShipDefaultWhatsapp,
                 (code) => customerShipDefaultWhatsappCode = code);
-            setPhoneAndCode(tempData?.customerShipWhatsappNo1, customerShipWhatsappNo1,
+            setPhoneAndCode(
+                tempData?.customerShipWhatsappNo1,
+                customerShipWhatsappNo1,
                 (code) => customerShipWhatsappNo1Code = code);
-            setPhoneAndCode(tempData?.customerShipWhatsappNo2, customerShipWhatsappNo2,
+            setPhoneAndCode(
+                tempData?.customerShipWhatsappNo2,
+                customerShipWhatsappNo2,
                 (code) => customerShipWhatsappNo2Code = code);
-            setPhoneAndCode(tempData?.customerShipWhatsappNo3, customerShipWhatsappNo3,
+            setPhoneAndCode(
+                tempData?.customerShipWhatsappNo3,
+                customerShipWhatsappNo3,
                 (code) => customerShipWhatsappNo3Code = code);
             // For emails no ISD code needed
             customerShipEmail.text = tempData?.customerShipEmail ?? "";
@@ -172,7 +203,9 @@ class EditProfileScreen extends StatelessWidget {
           log("-=-===-=-=-=-=-==-=-=-=-=-=- ${tempData?.customerShipStateName ?? "DEMOOOO"}");
           return Form(
             key: formKey,
-            autovalidateMode: autoValidate ? AutovalidateMode.always : AutovalidateMode.disabled,
+            autovalidateMode: autoValidate
+                ? AutovalidateMode.always
+                : AutovalidateMode.disabled,
             child: Stack(
               children: [
                 Column(
@@ -195,21 +228,24 @@ class EditProfileScreen extends StatelessWidget {
                                   customerBillPhone1,
                                   "Customer Bill Phone 1",
                                   customerBillPhone1Code,
-                                  (selectedModel) => customerBillPhone1Code = selectedModel,
+                                  (selectedModel) =>
+                                      customerBillPhone1Code = selectedModel,
                                 ),
                                 _phoneNumberBuilder(
                                   bloc,
                                   customerBillPhone2,
                                   "Customer Bill Phone 2",
                                   customerBillPhone2Code,
-                                  (selectedModel) => customerBillPhone2Code = selectedModel,
+                                  (selectedModel) =>
+                                      customerBillPhone2Code = selectedModel,
                                 ),
                                 _phoneNumberBuilder(
                                   bloc,
                                   customerBillPhone3,
                                   "Customer Bill Phone 3",
                                   customerBillPhone3Code,
-                                  (selectedModel) => customerBillPhone3Code = selectedModel,
+                                  (selectedModel) =>
+                                      customerBillPhone3Code = selectedModel,
                                 ),
                                 _buildReadOnlyField(
                                   labelText: "Default WhatsApp",
@@ -229,21 +265,27 @@ class EditProfileScreen extends StatelessWidget {
                                   customerBillWhatsappNo1,
                                   "Customer Bill WhatsApp No 1",
                                   customerBillWhatsappNo1Code,
-                                  (selectedModel) => customerBillWhatsappNo1Code = selectedModel,
+                                  (selectedModel) =>
+                                      customerBillWhatsappNo1Code =
+                                          selectedModel,
                                 ),
                                 _phoneNumberBuilder(
                                   bloc,
                                   customerBillWhatsappNo2,
                                   "Customer Bill WhatsApp No 2",
                                   customerBillWhatsappNo2Code,
-                                  (selectedModel) => customerBillWhatsappNo2Code = selectedModel,
+                                  (selectedModel) =>
+                                      customerBillWhatsappNo2Code =
+                                          selectedModel,
                                 ),
                                 _phoneNumberBuilder(
                                   bloc,
                                   customerBillWhatsappNo3,
                                   "Customer Bill WhatsApp No 3",
                                   customerBillWhatsappNo3Code,
-                                  (selectedModel) => customerBillWhatsappNo3Code = selectedModel,
+                                  (selectedModel) =>
+                                      customerBillWhatsappNo3Code =
+                                          selectedModel,
                                 ),
 
                                 _emailBuilder(
@@ -256,21 +298,24 @@ class EditProfileScreen extends StatelessWidget {
                                   customerShipPhone1,
                                   "Customer Ship Phone1",
                                   customerShipPhone1Code,
-                                  (selectedModel) => customerShipPhone1Code = selectedModel,
+                                  (selectedModel) =>
+                                      customerShipPhone1Code = selectedModel,
                                 ),
                                 _phoneNumberBuilder(
                                   bloc,
                                   customerShipPhone2,
                                   "Customer Ship Phone2",
                                   customerShipPhone2Code,
-                                  (selectedModel) => customerShipPhone2Code = selectedModel,
+                                  (selectedModel) =>
+                                      customerShipPhone2Code = selectedModel,
                                 ),
                                 _phoneNumberBuilder(
                                   bloc,
                                   customerShipPhone3,
                                   "Customer Ship Phone3",
                                   customerShipPhone3Code,
-                                  (selectedModel) => customerShipPhone3Code = selectedModel,
+                                  (selectedModel) =>
+                                      customerShipPhone3Code = selectedModel,
                                 ),
 
                                 _phoneNumberBuilder(
@@ -279,28 +324,35 @@ class EditProfileScreen extends StatelessWidget {
                                   "Customer Ship Default Whatsapp",
                                   customerShipDefaultWhatsappCode,
                                   (selectedModel) =>
-                                      customerShipDefaultWhatsappCode = selectedModel,
+                                      customerShipDefaultWhatsappCode =
+                                          selectedModel,
                                 ),
                                 _phoneNumberBuilder(
                                   bloc,
                                   customerShipWhatsappNo1,
                                   "Customer Ship Whatsapp No1",
                                   customerShipWhatsappNo1Code,
-                                  (selectedModel) => customerShipWhatsappNo1Code = selectedModel,
+                                  (selectedModel) =>
+                                      customerShipWhatsappNo1Code =
+                                          selectedModel,
                                 ),
                                 _phoneNumberBuilder(
                                   bloc,
                                   customerShipWhatsappNo2,
                                   "Customer Ship Whatsapp No2",
                                   customerShipWhatsappNo2Code,
-                                  (selectedModel) => customerShipWhatsappNo2Code = selectedModel,
+                                  (selectedModel) =>
+                                      customerShipWhatsappNo2Code =
+                                          selectedModel,
                                 ),
                                 _phoneNumberBuilder(
                                   bloc,
                                   customerShipWhatsappNo3,
                                   "Customer Ship Whatsapp No3",
                                   customerShipWhatsappNo3Code,
-                                  (selectedModel) => customerShipWhatsappNo3Code = selectedModel,
+                                  (selectedModel) =>
+                                      customerShipWhatsappNo3Code =
+                                          selectedModel,
                                 ),
 
                                 _emailBuilder(
@@ -331,17 +383,21 @@ class EditProfileScreen extends StatelessWidget {
                                     isReadOnly: !customerShipGstinEditable),
                                 _buildReadOnlyField(
                                   labelText: "Trade group",
-                                  value: tempData?.tradeGroupName?.toString() ?? "",
+                                  value: tempData?.tradeGroupName?.toString() ??
+                                      "",
                                 ),
                                 _buildReadOnlyField(
                                     labelText: "customer site name",
                                     value: tempData?.customerSiteName ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer site short name",
-                                    value: tempData?.customerSiteShortName ?? ""),
+                                    value:
+                                        tempData?.customerSiteShortName ?? ""),
                                 _buildReadOnlyField(
                                   labelText: "Transporter name",
-                                  value: tempData?.transporterName?.toString() ?? "",
+                                  value:
+                                      tempData?.transporterName?.toString() ??
+                                          "",
                                 ),
                                 _buildReadOnlyField(
                                   labelText: "Price list",
@@ -349,11 +405,14 @@ class EditProfileScreen extends StatelessWidget {
                                 ),
                                 _buildReadOnlyField(
                                   labelText: "Trade group",
-                                  value: tempData?.tradeGroupName?.toString() ?? "",
+                                  value: tempData?.tradeGroupName?.toString() ??
+                                      "",
                                 ),
                                 _buildReadOnlyField(
                                   labelText: "Transaction term",
-                                  value: tempData?.transactionTerm?.toString() ?? "",
+                                  value:
+                                      tempData?.transactionTerm?.toString() ??
+                                          "",
                                 ),
                                 _buildReadOnlyField(
                                   labelText: "Agent name",
@@ -361,7 +420,9 @@ class EditProfileScreen extends StatelessWidget {
                                 ),
                                 _buildReadOnlyField(
                                   labelText: "Agent percentage",
-                                  value: tempData?.agentPercentage?.toString() ?? "",
+                                  value:
+                                      tempData?.agentPercentage?.toString() ??
+                                          "",
                                 ),
                                 _buildReadOnlyField(
                                     labelText: "Bill Contact Person",
@@ -371,22 +432,28 @@ class EditProfileScreen extends StatelessWidget {
                                     value: tempData?.billContactNo ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Address 2",
-                                    value: tempData?.customerBillAddress2 ?? ""),
+                                    value:
+                                        tempData?.customerBillAddress2 ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Landmark",
-                                    value: tempData?.customerBillLandmark ?? ""),
+                                    value:
+                                        tempData?.customerBillLandmark ?? ""),
                                 _buildReadOnlyField(
-                                    labelText: "Area", value: tempData?.customerBillArea ?? ""),
+                                    labelText: "Area",
+                                    value: tempData?.customerBillArea ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "District",
-                                    value: tempData?.customerBillDistrict ?? ""),
+                                    value:
+                                        tempData?.customerBillDistrict ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "STD Code",
                                     value: tempData?.customerBillStdCode ?? ""),
 
                                 _buildReadOnlyField(
                                     labelText: "Alternate Email",
-                                    value: tempData?.customerBillAlternateEmail ?? ""),
+                                    value:
+                                        tempData?.customerBillAlternateEmail ??
+                                            ""),
                                 _buildReadOnlyField(
                                     labelText: "Website",
                                     value: tempData?.customerBillWebsite ?? ""),
@@ -398,22 +465,27 @@ class EditProfileScreen extends StatelessWidget {
                                     value: tempData?.billContactNo ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill Address 1",
-                                    value: tempData?.customerBillAddress1 ?? ""),
+                                    value:
+                                        tempData?.customerBillAddress1 ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill Address 2",
-                                    value: tempData?.customerBillAddress2 ?? ""),
+                                    value:
+                                        tempData?.customerBillAddress2 ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill Landmark",
-                                    value: tempData?.customerBillLandmark ?? ""),
+                                    value:
+                                        tempData?.customerBillLandmark ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill Area",
                                     value: tempData?.customerBillArea ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill District",
-                                    value: tempData?.customerBillDistrict ?? ""),
+                                    value:
+                                        tempData?.customerBillDistrict ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill City",
-                                    value: tempData?.customerBillCityName ?? ""),
+                                    value:
+                                        tempData?.customerBillCityName ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill pincode",
                                     value: tempData?.customerBillPincode ?? ""),
@@ -436,29 +508,38 @@ class EditProfileScreen extends StatelessWidget {
 
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill Default WhatsApp",
-                                    value: tempData?.customerBillDefaultWhatsapp ?? ""),
+                                    value:
+                                        tempData?.customerBillDefaultWhatsapp ??
+                                            ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill WhatsApp No 1",
-                                    value: tempData?.customerBillWhatsappNo1 ?? ""),
+                                    value: tempData?.customerBillWhatsappNo1 ??
+                                        ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill WhatsApp No 2",
-                                    value: tempData?.customerBillWhatsappNo2 ?? ""),
+                                    value: tempData?.customerBillWhatsappNo2 ??
+                                        ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill WhatsApp No 3",
-                                    value: tempData?.customerBillWhatsappNo3 ?? ""),
+                                    value: tempData?.customerBillWhatsappNo3 ??
+                                        ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill Alternate Email",
-                                    value: tempData?.customerBillAlternateEmail ?? ""),
+                                    value:
+                                        tempData?.customerBillAlternateEmail ??
+                                            ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill Website",
                                     value: tempData?.customerBillWebsite ?? ""),
 
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill GSTIN Date",
-                                    value: tempData?.customerBillGstinDate ?? ""),
+                                    value:
+                                        tempData?.customerBillGstinDate ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Bill GST State",
-                                    value: tempData?.customerBillGstStateName ?? ""),
+                                    value: tempData?.customerBillGstStateName ??
+                                        ""),
                                 _buildReadOnlyField(
                                     labelText: "Ship Contact Person",
                                     value: tempData?.shipContactPerson ?? ""),
@@ -467,32 +548,39 @@ class EditProfileScreen extends StatelessWidget {
                                     value: tempData?.shipContactNo ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship Address1",
-                                    value: tempData?.customerShipAddress1 ?? ""),
+                                    value:
+                                        tempData?.customerShipAddress1 ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship Address2",
-                                    value: tempData?.customerShipAddress2 ?? ""),
+                                    value:
+                                        tempData?.customerShipAddress2 ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship Landmark",
-                                    value: tempData?.customerShipLandmark ?? ""),
+                                    value:
+                                        tempData?.customerShipLandmark ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship Area",
                                     value: tempData?.customerShipArea ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship District",
-                                    value: tempData?.customerShipDistrict ?? ""),
+                                    value:
+                                        tempData?.customerShipDistrict ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship Pincode",
                                     value: tempData?.customerShipPincode ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship City",
-                                    value: tempData?.customerShipCityName ?? ""),
+                                    value:
+                                        tempData?.customerShipCityName ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship State",
-                                    value: tempData?.customerShipStateName ?? ""),
+                                    value:
+                                        tempData?.customerShipStateName ?? ""),
 
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship Country",
-                                    value: tempData?.customerShipCountryName ?? ""),
+                                    value: tempData?.customerShipCountryName ??
+                                        ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship Isd Code",
                                     value: tempData?.customerShipIsdCode ?? ""),
@@ -502,7 +590,9 @@ class EditProfileScreen extends StatelessWidget {
 
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship Alternate Email",
-                                    value: tempData?.customerShipAlternateEmail ?? ""),
+                                    value:
+                                        tempData?.customerShipAlternateEmail ??
+                                            ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship Website",
                                     value: tempData?.customerShipWebsite ?? ""),
@@ -511,17 +601,21 @@ class EditProfileScreen extends StatelessWidget {
                                     value: tempData?.customerShipGstin ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship Gstin Date",
-                                    value: tempData?.customerShipGstinDate ?? ""),
+                                    value:
+                                        tempData?.customerShipGstinDate ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "Customer Ship Gst State",
-                                    value: tempData?.customerShipGstStateName ?? ""),
+                                    value: tempData?.customerShipGstStateName ??
+                                        ""),
 
                                 _buildReadOnlyField(
                                     labelText: "GSTIN Date",
-                                    value: tempData?.customerBillGstinDate ?? ""),
+                                    value:
+                                        tempData?.customerBillGstinDate ?? ""),
                                 _buildReadOnlyField(
                                     labelText: "GST State",
-                                    value: tempData?.customerBillGstStateName ?? ""),
+                                    value: tempData?.customerBillGstStateName ??
+                                        ""),
                               ],
                             ),
                           ],
@@ -529,7 +623,8 @@ class EditProfileScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: getPadding(left: 15, right: 15, bottom: 10, top: 5),
+                      padding:
+                          getPadding(left: 15, right: 15, bottom: 10, top: 5),
                       child: Center(
                         child: BlocProvider<SignInCubit>(
                           create: (context) => SignInCubit(false),
@@ -552,92 +647,113 @@ class EditProfileScreen extends StatelessWidget {
                                         bloc.onValueChange();
                                         if (formKey.currentState!.validate()) {
                                           Map<String, String> body = {
-                                            "id": Singleton.instance.userData?.id.toString() ?? "",
-                                            "customer_bill_email": customerBillEmail.text,
-                                            "customer_bill_phone1": customerBillPhone1.text
-                                                    .trim()
-                                                    .isEmpty
-                                                ? ""
-                                                : "${customerBillPhone1Code?.value} ${customerBillPhone1.text.trim()}",
-                                            "customer_bill_phone2": customerBillPhone2.text
-                                                    .trim()
-                                                    .isEmpty
-                                                ? ""
-                                                : "${customerBillPhone2Code?.value} ${customerBillPhone2.text.trim()}",
-                                            "customer_bill_phone3": customerBillPhone3.text
-                                                    .trim()
-                                                    .isEmpty
-                                                ? ""
-                                                : "${customerBillPhone3Code?.value} ${customerBillPhone3.text.trim()}",
-                                            "customer_bill_whatsapp_no1": customerBillWhatsappNo1
-                                                    .text
-                                                    .trim()
-                                                    .isEmpty
-                                                ? ""
-                                                : "${customerBillWhatsappNo1Code?.value} ${customerBillWhatsappNo1.text.trim()}",
-                                            "customer_bill_whatsapp_no2": customerBillWhatsappNo2
-                                                    .text
-                                                    .trim()
-                                                    .isEmpty
-                                                ? ""
-                                                : "${customerBillWhatsappNo2Code?.value} ${customerBillWhatsappNo2.text.trim()}",
-                                            "customer_bill_whatsapp_no3": customerBillWhatsappNo3
-                                                    .text
-                                                    .trim()
-                                                    .isEmpty
-                                                ? ""
-                                                : "${customerBillWhatsappNo3Code?.value} ${customerBillWhatsappNo3.text.trim()}",
+                                            "id": Singleton
+                                                    .instance.userData?.id
+                                                    .toString() ??
+                                                "",
+                                            "customer_bill_email":
+                                                customerBillEmail.text,
+                                            "customer_bill_phone1":
+                                                customerBillPhone1.text
+                                                        .trim()
+                                                        .isEmpty
+                                                    ? ""
+                                                    : "${customerBillPhone1Code?.value} ${customerBillPhone1.text.trim()}",
+                                            "customer_bill_phone2":
+                                                customerBillPhone2.text
+                                                        .trim()
+                                                        .isEmpty
+                                                    ? ""
+                                                    : "${customerBillPhone2Code?.value} ${customerBillPhone2.text.trim()}",
+                                            "customer_bill_phone3":
+                                                customerBillPhone3.text
+                                                        .trim()
+                                                        .isEmpty
+                                                    ? ""
+                                                    : "${customerBillPhone3Code?.value} ${customerBillPhone3.text.trim()}",
+                                            "customer_bill_whatsapp_no1":
+                                                customerBillWhatsappNo1.text
+                                                        .trim()
+                                                        .isEmpty
+                                                    ? ""
+                                                    : "${customerBillWhatsappNo1Code?.value} ${customerBillWhatsappNo1.text.trim()}",
+                                            "customer_bill_whatsapp_no2":
+                                                customerBillWhatsappNo2.text
+                                                        .trim()
+                                                        .isEmpty
+                                                    ? ""
+                                                    : "${customerBillWhatsappNo2Code?.value} ${customerBillWhatsappNo2.text.trim()}",
+                                            "customer_bill_whatsapp_no3":
+                                                customerBillWhatsappNo3.text
+                                                        .trim()
+                                                        .isEmpty
+                                                    ? ""
+                                                    : "${customerBillWhatsappNo3Code?.value} ${customerBillWhatsappNo3.text.trim()}",
                                             "customer_bill_default_whatsapp":
-                                                customerBillDefaultWhatsapp.text.trim().isEmpty
+                                                customerBillDefaultWhatsapp.text
+                                                        .trim()
+                                                        .isEmpty
                                                     ? ""
                                                     : "${customerBillDefaultWhatsappCode?.value} ${customerBillDefaultWhatsapp.text.trim()}",
                                             "bill_pan_card": billPanCard.text,
-                                            "customer_bill_gstin": customerBillGstin.text,
-                                            "customer_ship_email": customerShipEmail.text,
-                                            "customer_ship_phone1": customerShipPhone1.text
-                                                    .trim()
-                                                    .isEmpty
-                                                ? ""
-                                                : "${customerShipPhone1Code?.value} ${customerShipPhone1.text.trim()}",
-                                            "customer_ship_phone2": customerShipPhone2.text
-                                                    .trim()
-                                                    .isEmpty
-                                                ? ""
-                                                : "${customerShipPhone2Code?.value} ${customerShipPhone2.text.trim()}",
-                                            "customer_ship_phone3": customerShipPhone3.text
-                                                    .trim()
-                                                    .isEmpty
-                                                ? ""
-                                                : "${customerShipPhone3Code?.value} ${customerShipPhone3.text.trim()}",
-                                            "customer_ship_whatsapp_no1": customerShipWhatsappNo1
-                                                    .text
-                                                    .trim()
-                                                    .isEmpty
-                                                ? ""
-                                                : "${customerShipWhatsappNo1Code?.value} ${customerShipWhatsappNo1.text.trim()}",
-                                            "customer_ship_whatsapp_no2": customerShipWhatsappNo2
-                                                    .text
-                                                    .trim()
-                                                    .isEmpty
-                                                ? ""
-                                                : "${customerShipWhatsappNo2Code?.value} ${customerShipWhatsappNo2.text.trim()}",
-                                            "customer_ship_whatsapp_no3": customerShipWhatsappNo3
-                                                    .text
-                                                    .trim()
-                                                    .isEmpty
-                                                ? ""
-                                                : "${customerShipWhatsappNo3Code?.value} ${customerShipWhatsappNo3.text.trim()}",
+                                            "customer_bill_gstin":
+                                                customerBillGstin.text,
+                                            "customer_ship_email":
+                                                customerShipEmail.text,
+                                            "customer_ship_phone1":
+                                                customerShipPhone1.text
+                                                        .trim()
+                                                        .isEmpty
+                                                    ? ""
+                                                    : "${customerShipPhone1Code?.value} ${customerShipPhone1.text.trim()}",
+                                            "customer_ship_phone2":
+                                                customerShipPhone2.text
+                                                        .trim()
+                                                        .isEmpty
+                                                    ? ""
+                                                    : "${customerShipPhone2Code?.value} ${customerShipPhone2.text.trim()}",
+                                            "customer_ship_phone3":
+                                                customerShipPhone3.text
+                                                        .trim()
+                                                        .isEmpty
+                                                    ? ""
+                                                    : "${customerShipPhone3Code?.value} ${customerShipPhone3.text.trim()}",
+                                            "customer_ship_whatsapp_no1":
+                                                customerShipWhatsappNo1.text
+                                                        .trim()
+                                                        .isEmpty
+                                                    ? ""
+                                                    : "${customerShipWhatsappNo1Code?.value} ${customerShipWhatsappNo1.text.trim()}",
+                                            "customer_ship_whatsapp_no2":
+                                                customerShipWhatsappNo2.text
+                                                        .trim()
+                                                        .isEmpty
+                                                    ? ""
+                                                    : "${customerShipWhatsappNo2Code?.value} ${customerShipWhatsappNo2.text.trim()}",
+                                            "customer_ship_whatsapp_no3":
+                                                customerShipWhatsappNo3.text
+                                                        .trim()
+                                                        .isEmpty
+                                                    ? ""
+                                                    : "${customerShipWhatsappNo3Code?.value} ${customerShipWhatsappNo3.text.trim()}",
                                             "customer_ship_default_whatsapp":
-                                                customerShipDefaultWhatsapp.text.trim().isEmpty
+                                                customerShipDefaultWhatsapp.text
+                                                        .trim()
+                                                        .isEmpty
                                                     ? ""
                                                     : "${customerShipDefaultWhatsappCode?.value} ${customerShipDefaultWhatsapp.text.trim()}",
                                             "ship_pan_card": shipPanCard.text,
-                                            "customer_ship_gstin": customerShipGstin.text,
+                                            "customer_ship_gstin":
+                                                customerShipGstin.text,
                                           };
                                           log("${customerBillDefaultWhatsappCode?.value} - ${tempData?.billContactNo ?? ""}");
-                                          final bloc1 = context.read<SignInCubit>();
-                                          bloc1.sendOtp(tempData?.billContactNo ?? "",
-                                              customerBillDefaultWhatsappCode?.value ?? "+91",
+                                          final bloc1 =
+                                              context.read<SignInCubit>();
+                                          bloc1.sendOtp(
+                                              tempData?.billContactNo ?? "",
+                                              customerBillDefaultWhatsappCode
+                                                      ?.value ??
+                                                  "+91",
                                               isFromEditProfile: true,
                                               context: context,
                                               bodyForUpdateProfile: body);
@@ -668,8 +784,12 @@ class EditProfileScreen extends StatelessWidget {
   }
 }
 
-Widget _phoneNumberBuilder(EditProfileCubit bloc, TextEditingController controller, String title,
-    IsdCodeModel? selectedModel, Function(IsdCodeModel? selectedModel) onChange) {
+Widget _phoneNumberBuilder(
+    EditProfileCubit bloc,
+    TextEditingController controller,
+    String title,
+    IsdCodeModel? selectedModel,
+    Function(IsdCodeModel? selectedModel) onChange) {
   return Row(
     spacing: getSize(5),
     mainAxisAlignment: MainAxisAlignment.start,
@@ -705,6 +825,7 @@ Widget _phoneNumberBuilder(EditProfileCubit bloc, TextEditingController controll
           keyboardType: TextInputType.phone,
           labelText: title,
           controller: controller,
+          backGroundColor: Colors.white,
           hintText: "Enter ${title.toLowerCase()}",
         ),
       )
@@ -722,7 +843,9 @@ Widget _emailBuilder(
       Validation.allowOnlyNumbers(),
     ],
     validator: (value) {
-      if (value != null && value.isNotEmpty && !Validation.emailValidation(email: value)) {
+      if (value != null &&
+          value.isNotEmpty &&
+          !Validation.emailValidation(email: value)) {
         return "Invalid email address";
       }
       return null;
@@ -730,6 +853,7 @@ Widget _emailBuilder(
     keyboardType: TextInputType.phone,
     labelText: title,
     controller: controller,
+    backGroundColor: Colors.white,
     hintText: "Enter ${title.toLowerCase()}",
   );
 }
@@ -742,6 +866,7 @@ Widget _buildReadOnlyField(
   return AppTextField(
     labelText: labelText,
     readOnly: isReadOnly,
+    backGroundColor: Colors.grey.shade200,
     controller: controller ?? TextEditingController(text: value ?? ""),
   );
 }

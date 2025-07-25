@@ -26,7 +26,8 @@ class DispatchStatusScreen extends StatelessWidget {
               message: state.errorMessage,
             );
           } else if (state is DispatchStatusSuccessState) {
-            List<DispatchStatus> orderMemoList = state.dispatchStatusResModel.data ?? [];
+            List<DispatchStatus> orderMemoList =
+                state.dispatchStatusResModel.data ?? [];
             return orderMemoList.isEmpty
                 ? const NoDataFoundView(
                     message: "No Dispatch Status Found",
@@ -48,7 +49,7 @@ class DispatchStatusScreen extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: CustomText(
-                                    text: item.remarks ?? "N/A",
+                                    text: "Remarks - s${item.remarks ?? "N/A"}",
                                     style: CustomTextStyle.bodyText.copyWith(
                                       color: AppColors.primaryText3,
                                       fontSize: getSize(14),
@@ -74,7 +75,8 @@ class DispatchStatusScreen extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: CustomText(
-                                    text: "Amt - ${item.totalGrossAmt ?? "N/A"}",
+                                    text:
+                                        "Amt - ${item.totalGrossAmt ?? "N/A"}",
                                     style: CustomTextStyle.bodyText.copyWith(
                                       fontSize: getSize(14),
                                       color: AppColors.primaryText4,
@@ -85,7 +87,8 @@ class DispatchStatusScreen extends StatelessWidget {
                                 Expanded(
                                   flex: 2,
                                   child: CustomText(
-                                    text: "Status - ${item.dispatchStatus ?? "N/A"}",
+                                    text:
+                                        "Status - ${item.dispatchStatus ?? "N/A"}",
                                     style: CustomTextStyle.bodyText.copyWith(
                                       fontSize: getSize(14),
                                       color: AppColors.primaryText4,
@@ -93,6 +96,23 @@ class DispatchStatusScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                CustomText(
+                                  text: "Expires in 7 days",
+                                  style: CustomTextStyle.bodyText.copyWith(
+                                    fontSize: getSize(13),
+                                    fontStyle: FontStyle.italic,
+                                    color: AppColors.primaryText4,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 30,
+                                )
                               ],
                             ),
                           ],

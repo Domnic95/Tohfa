@@ -22,10 +22,10 @@ class ReportScreen extends StatelessWidget {
         "title": "Dispatch Status",
         "route": AppRoutes.dispatchStatusScreen,
       },
-      {
-        "title": "Invoice",
-        "route": AppRoutes.invoiceScreen,
-      },
+      // {
+      //   "title": "Invoice",
+      //   "route": AppRoutes.invoiceScreen,
+      // },
       {
         "title": "Past Food Orders",
         "route": AppRoutes.pastFoodOrderScreen,

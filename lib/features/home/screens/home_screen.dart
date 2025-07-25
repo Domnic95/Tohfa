@@ -631,8 +631,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         BorderRadius.circular(getSize(16)),
                                     child: Container(
                                       height: getSize(190),
-                                      width: MediaQuery.of(context).size.width *
-                                          0.9,
+                                      width: MediaQuery.of(context).size.width,
                                       decoration: BoxDecoration(
                                           color: AppColors.whiteText,
                                           borderRadius: BorderRadius.circular(
@@ -641,7 +640,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                         children: [
                                           CustomImageView(
                                             height: getSize(190),
-                                            fit: BoxFit.contain,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            fit: BoxFit.cover,
                                             url: catalog[index].bannerUrl ?? "",
                                           ),
                                           Positioned(

@@ -113,7 +113,24 @@ class TokenScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ],
-                                )
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    CustomText(
+                                      text: "Expires in 7 days",
+                                      style: CustomTextStyle.bodyText.copyWith(
+                                        fontSize: getSize(13),
+                                        fontStyle: FontStyle.italic,
+                                        color: AppColors.primaryText4,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    )
+                                  ],
+                                ),
                               ],
                             ),
                           );

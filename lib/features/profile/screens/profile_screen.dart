@@ -480,11 +480,11 @@ class ProfileScreen extends StatelessWidget {
                                                         GestureDetector(
                                                           onTap: () async {
                                                             String
-                                                                genratedToken =
+                                                                generatedToken =
                                                                 await bloc.generateToken(
-                                                                    customerSite:
-                                                                        bloc.selectedModel!
-                                                                            .id,
+                                                                    customerSite: bloc
+                                                                        .selectedModel!
+                                                                        .id,
                                                                     sectionId: bloc
                                                                         .selectedSectionId,
                                                                     siteId: bloc
@@ -494,7 +494,7 @@ class ProfileScreen extends StatelessWidget {
                                                             customAlertDialog(
                                                                 title: "Token",
                                                                 message:
-                                                                    "Your genrated token is $genratedToken");
+                                                                    "Your generated token is $generatedToken");
                                                           },
                                                           child: Container(
                                                             margin:

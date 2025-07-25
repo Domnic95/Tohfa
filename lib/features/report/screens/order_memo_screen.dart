@@ -28,7 +28,7 @@ class OrderMemoScreen extends StatelessWidget {
               message: state.errorMessage,
             );
           } else if (state is OrderMemoSuccessState) {
-            final bloc= context.read<ReportCubit>();
+            final bloc = context.read<ReportCubit>();
             List<OrderMemo> orderMemoList = state.orderMemoModel.data ?? [];
             return Stack(
               children: [
@@ -44,9 +44,11 @@ class OrderMemoScreen extends StatelessWidget {
 
                           String date = "N/A";
                           try {
-                            final inputFormat = DateFormat("MM/dd/yyyy HH:mm:ss");
+                            final inputFormat =
+                                DateFormat("MM/dd/yyyy HH:mm:ss");
                             final outputFormat = DateFormat("dd MMMM yyyy");
-                            final parsedDate = inputFormat.parse(item.orDate ?? "");
+                            final parsedDate =
+                                inputFormat.parse(item.orDate ?? "");
                             date = outputFormat.format(parsedDate);
                           } catch (e) {
                             logV("Error===>$e");
@@ -64,7 +66,8 @@ class OrderMemoScreen extends StatelessWidget {
                                     Expanded(
                                       child: CustomText(
                                         text: "Order Memo No. ${item.orNo}",
-                                        style: CustomTextStyle.bodyText.copyWith(
+                                        style:
+                                            CustomTextStyle.bodyText.copyWith(
                                           color: AppColors.primaryText3,
                                           fontSize: getSize(14),
                                           fontWeight: FontWeight.w600,
@@ -81,7 +84,8 @@ class OrderMemoScreen extends StatelessWidget {
                                       ),
                                       child: CustomText(
                                         text: item.orStatus ?? "N/A",
-                                        style: CustomTextStyle.bodyText.copyWith(
+                                        style:
+                                            CustomTextStyle.bodyText.copyWith(
                                           fontSize: getSize(14),
                                           color: AppColors.primaryText4,
                                           fontWeight: FontWeight.w500,
@@ -108,7 +112,8 @@ class OrderMemoScreen extends StatelessWidget {
                                       child: CustomText(
                                         text:
                                             "Quantity - ${item.totalQty ?? "N/A"}",
-                                        style: CustomTextStyle.bodyText.copyWith(
+                                        style:
+                                            CustomTextStyle.bodyText.copyWith(
                                           fontSize: getSize(14),
                                           color: AppColors.primaryText4,
                                           fontWeight: FontWeight.w500,
@@ -118,8 +123,9 @@ class OrderMemoScreen extends StatelessWidget {
                                     Expanded(
                                       child: CustomText(
                                         text:
-                                            "Value - ${item.totalPayOrderAmt ?? "N/A"}",
-                                        style: CustomTextStyle.bodyText.copyWith(
+                                            "Value - ${item.totalGrossAmt ?? "N/A"}",
+                                        style:
+                                            CustomTextStyle.bodyText.copyWith(
                                           fontSize: getSize(14),
                                           color: AppColors.primaryText4,
                                           fontWeight: FontWeight.w500,
@@ -131,8 +137,9 @@ class OrderMemoScreen extends StatelessWidget {
                                         children: [
                                           Spacer(),
                                           InkWell(
-                                            onTap: (){
-                                              bloc.downloadOrderMemo(item.id.toString());
+                                            onTap: () {
+                                              bloc.downloadOrderMemo(
+                                                  item.id.toString());
                                             },
                                             child: Container(
                                               padding: getPadding(all: 4),
@@ -146,8 +153,8 @@ class OrderMemoScreen extends StatelessWidget {
                                               ),
                                               child: CustomText(
                                                 text: "Download PDF",
-                                                style:
-                                                    CustomTextStyle.bodyText.copyWith(
+                                                style: CustomTextStyle.bodyText
+                                                    .copyWith(
                                                   fontSize: getSize(10),
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -158,14 +165,31 @@ class OrderMemoScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ],
-                                )
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    CustomText(
+                                      text: "Expires in 7 days",
+                                      style: CustomTextStyle.bodyText.copyWith(
+                                        fontSize: getSize(13),
+                                        fontStyle: FontStyle.italic,
+                                        color: AppColors.primaryText4,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    )
+                                  ],
+                                ),
                               ],
                             ),
                           );
                         },
                       ),
                 Visibility(
-                  visible:bloc.isLoading,
+                  visible: bloc.isLoading,
                   child: Container(
                     color: AppColors.black.withValues(alpha: .07),
                     child: CustomLoading(),

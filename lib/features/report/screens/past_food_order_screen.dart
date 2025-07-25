@@ -21,7 +21,7 @@ class PastFoodOrderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bgColor,
-      appBar:reportScreenAppbar("Past Food Order"),
+      appBar: reportScreenAppbar("Past Food Order"),
       body: BlocBuilder<ReportCubit, ReportState>(
         builder: (context, state) {
           if (state is ReportErrorState) {
@@ -45,7 +45,8 @@ class PastFoodOrderScreen extends StatelessWidget {
                       try {
                         final inputFormat = DateFormat("MM/dd/yyyy HH:mm:ss");
                         final outputFormat = DateFormat("dd MMMM yyyy");
-                        final parsedDate = inputFormat.parse(item.foodOrderDate ?? "");
+                        final parsedDate =
+                            inputFormat.parse(item.foodOrderDate ?? "");
                         date = outputFormat.format(parsedDate);
                       } catch (e) {
                         logV("Error===>$e");
@@ -63,7 +64,7 @@ class PastFoodOrderScreen extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: CustomText(
-                                    text:item.foodMenuName??"N/A",
+                                    text: item.foodMenuName ?? "N/A",
                                     style: CustomTextStyle.bodyText.copyWith(
                                       color: AppColors.primaryText3,
                                       fontSize: getSize(14),
@@ -73,7 +74,7 @@ class PastFoodOrderScreen extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: CustomText(
-                                    text:"Token No - ${item.foodOrderNo}",
+                                    text: "Token No - ${item.foodOrderNo}",
                                     style: CustomTextStyle.bodyText.copyWith(
                                       color: AppColors.primaryText4,
                                       fontSize: getSize(13),
@@ -99,7 +100,8 @@ class PastFoodOrderScreen extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: CustomText(
-                                    text: "Order Status - ${item.itemDelvStatus}",
+                                    text:
+                                        "Order Status - ${item.itemDelvStatus}",
                                     style: CustomTextStyle.bodyText.copyWith(
                                       color: AppColors.primaryText4,
                                       fontSize: getSize(13),
@@ -109,7 +111,23 @@ class PastFoodOrderScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                CustomText(
+                                  text: "Expires in 7 days",
+                                  style: CustomTextStyle.bodyText.copyWith(
+                                    fontSize: getSize(13),
+                                    fontStyle: FontStyle.italic,
+                                    color: AppColors.primaryText4,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 30,
+                                )
+                              ],
+                            ),
                           ],
                         ),
                       );
